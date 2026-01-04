@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--this is the base template. all other html templates inherit from this-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    
+
+    {% block head %}<title></title> {% endblock %}
+</head>
+<body>
+    
+    {% block body %}{% endblock %}
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Incidunt repellendus consequatur deserunt neque nostrum!
+        Et autem, excepturi magni vel totam ab amet impedit quae debitis
+        voluptate recusandae sapiente atque odit?
+    </p>
+    
+</body>
+</html>

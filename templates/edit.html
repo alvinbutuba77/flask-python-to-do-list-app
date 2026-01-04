@@ -1,0 +1,24 @@
+<!-- inherited html -->
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>edit - my flask </title>
+{% endblock %}
+  
+{% block body %}
+   
+    <div class="content">
+   
+        <h2>Task Smash 2.0</h2>
+        <h3>Edit task</h3>
+
+        <form action="/edit/{{task.id}}" method="POST">
+            <!-- action and method to send to db-->
+            <input type="text" name="content" id="content" value="{{task.content}}" />
+            <input type="submit" value="Edit"  />
+        </form>
+
+        <p>note: task should be less than 100 characters</p>
+    </div> 
+
+    {% endblock %}

@@ -1,0 +1,51 @@
+<!-- inherited from base.html -->
+{% extends 'base.html' %}
+
+{% block head %}
+<title>My Flask </title>
+{% endblock %}
+
+{% block body %}
+ <div class="content">
+        <h1>Task Smash 2.0</h1>
+
+        <!--stage 3 displaying  db model info on webpage-->
+        {% if tasks | length < 1 %}
+
+        <h3>There are no tasks...Create one here</h3>
+        {% else %}
+
+            <table>
+                <tr>
+                    <th>Task</th>
+                    <th>Added</th>
+                    <th>Complete</th>
+                    <th>Actions</th>
+                    
+                </tr>
+                {% for task in tasks %}
+                    <tr>
+                        <td>{{task.content}}</td>
+                        <td>{{task.created.strftime("%Y-%m-%d")}}</td>
+                        <td>{{task.complete}}</td>
+                        <td>
+                            <!-- adding route to link-->
+                            <a href="/delete/{{task.id}}">Delete</a>
+                            <br/>
+                            <a href="/edit/{{task.id}}">Edit</a>
+                            <br/>
+                        </td>
+                        
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+        
+        <form action="/" method="POST"><!-- action and method to send to db-->
+            <input type="text" name="content" id="content" />
+            <input type="submit" value="Add Task" id="btn_add" />
+        </form>
+
+        <p>note: tasks should be less than 100 characters</p>
+    </div>
+{% endblock %}
